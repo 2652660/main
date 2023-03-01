@@ -1,0 +1,105 @@
+{
+    "define": [
+        [
+            "DOMAIN",
+            "USID.STORE"
+        ],[
+            "ENCODING",
+            "UTF-8"
+        ],[
+            "iiLANGUAGE",
+            "en"
+        ],[
+            "iiCOUNTRY",
+            "US"
+        ],[
+            "CONTENT",
+            "text/html"
+        ],[
+            "CURRENT",
+            "{getcwd}"
+        ],[
+            "DISPLAY_ERRORS",
+            true
+        ],[
+            "STARTUP_ERRORS",
+            true
+        ],[
+            "UPLOADS",
+            false
+        ],[
+            "MULTIBYTE",
+            true
+        ],[
+            "TIMEZONE",
+            "America/Los_Angeles"
+        ],[
+            "SUBSTITUTE",
+            "None"
+        ],[
+            "USER_AGENT",
+            "USID.STORE"
+        ],[
+            "TIMEOUT",
+            60
+        ],[
+            "CONV_MIME_TYPE",
+            "(text/|application/xhtml\\+xml)"
+        ],[
+            "LANGUAGE",
+            "Neutral"
+        ]
+    ],
+    "error_reporting": "E_ALL",
+    "date_default_timezone_set": "{TIMEZONE}",
+    "setlocale": [
+        "LC_ALL",
+        "{ENCODING}.{iiLANGUAGE}",
+        "{iiLANGUAGE}"
+    ],
+    "mb_http_input": "{ENCODING}",
+    "mb_http_output": "{ENCODING}",
+    "mb_internal_encoding": "{ENCODING}",
+    "mb_regex_encoding": "{ENCODING}",
+    "mb_substitute_character": "{SUBSTITUTE}",
+    "mb_language": "{LANGUAGE}",
+    "mbstring_http_output_conv_mimetype": "{CONV_MIME_TYPE}",
+    "bindtextdomain": [
+        "{DOMAIN}",
+        "/locale/"
+    ],
+    "textdomain": "{DOMAIN}",
+    "ini_set": [
+        [
+            "display_errors",
+            "{DISPLAY_ERRORS}"
+        ],[
+            "display_startup_errors",
+            "{STARTUP_ERRORS}"
+        ],[
+            "default_charset",
+            "{ENCODING}"
+        ],[
+            "user_agent",
+            "{USER_AGENT}"
+        ],[
+            "default_socket_timeout",
+            "{TIMEOUT}"
+        ],[
+            "include_path",
+            ".:{CURRENT}"
+        ],[
+            "input_encoding",
+            "{ENCODING}"
+        ],[
+            "output_encoding",
+            "{ENCODING}"
+        ],[
+            "max_execution_time",
+            4
+        ],[
+            "browscap",
+            ""
+        ]
+    ]
+}
