@@ -19,6 +19,9 @@ define('EMT', ' ');
 
 $radix = new class(__FILE__) extends SplFileInfo {
     private ArrayObject $tense;
+    private locale $locale;
+    private route $route;
+    private media $media;
 
     public function php(SplFileInfo $file_info)
     {
@@ -47,7 +50,14 @@ $radix = new class(__FILE__) extends SplFileInfo {
                     }
                     else
                     {
-                        $file_path = mime_content_type($this->getRealPath());
+                        if(empty($this->media))
+                        {
+                            $file_path = mime_content_type($this->getRealPath());
+                        }
+                        else
+                        {
+                            $file_path = $this->media->getMediaType($this->getFileInfo());
+                        }
                         $file_info = new SplFileInfo(join(INI, [
                             $this->getPath(),
                             $file_path,
@@ -119,12 +129,12 @@ $radix = new class(__FILE__) extends SplFileInfo {
         $this->tense->setFlags(ArrayObject::ARRAY_AS_PROPS);
         $this->register_extension($this);
         $this->register_autoload();
-        new configure('application/json/configure');
-        $locale = new locale();
+        $multibyte = new multibyte();
+        $this->media = new media('application/json/media');
+        $configure = new configure('application/json/configure');
+        $this->locale = new locale();
         out::put();
-
-        $media = new media('plain/text/media');
-        $media->cabbage();
+        var_dump($this->media->getMediaType(new SplFileInfo('.css')));
         /*
         echo $_SERVER['REQUEST_URI'];
         echo mime_content_type('test.css') . "\r\n";
