@@ -1,0 +1,20 @@
+class media extends remote
+{
+    public function __construct(string $file_name)
+    {
+        parent::__construct($file_name);
+    }
+
+    public function types()
+    {
+        if($this->isFile() === false || $this->garbage())
+        {
+            
+        }
+    }
+
+    public static function cabbage($uri = null, $class = null)
+    {
+        parent::cabbage('https://www.iana.org/assignments/media-types/media-types.txt', __CLASS__);
+    }
+}
