@@ -38,7 +38,7 @@
             "None"
         ],[
             "USER_AGENT",
-            "USID.STORE"
+            "USID.STORE by C.M.R - Sorry if I overboard the data."
         ],[
             "TIMEOUT",
             60
@@ -98,8 +98,8 @@
             "max_execution_time",
             4
         ],[
-            "browscap",
-            ""
+            "memory_limit",
+            "512M"
         ]
     ]
 }
