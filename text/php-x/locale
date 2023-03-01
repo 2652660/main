@@ -1,0 +1,7 @@
+class locale
+{
+    public static function fromAgent()
+    {
+        return Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    }
+}
