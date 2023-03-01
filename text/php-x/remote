@@ -7,48 +7,22 @@ class remote extends SplFileInfo
         parent::__construct($file_name);
     }
 
-    public static function cabbage($uri, $class)
+    public function __destruct()
     {
-        $from_file_object = new SplFileObject($uri, 'r');
-        $to = join(INI, [
-            'text/plain',
-            $class
-        ]);
-        $to_file_info = new SplFileInfo($to);
-        $to_file_object = $to_file_info->openFile('a+', false, null);
-        $structure = [];
-        $write = false;
-        do
-        {
-            $line = $from_file_object->fgets();
-            $chunk = preg_split('/[\s]+/i', $line, -1, PREG_SPLIT_NO_EMPTY);
-            if($write && count($chunk) === 3)
-            {
-                if(isset($structure[$chunk[0]]))
-                {
-                    $structure[$chunk[0]][] = $chunk[1];
-                }
-                else
-                {
-                    $structure[$chunk[0]] = [$chunk[1]];
-                }
-            }
-            else 
-            {
-                $write = false;
-            }
-            if($chunk == ['Name', 'Template', 'Reference'])
-            {
-                $write = true;
-            }
-        }
-        while($from_file_object->valid());
-        $to_file_object->fwrite(json_encode($structure, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE, 4));
+        $this->garbage();
     }
 
     public function garbage()
     {
-        if($this->isFile() === false || (time() - $this->getMTime()) >= $this->expire)
+        if($this->isFile() && $this->expired())
+        {
+            unlink($this->getRealPath());
+        }
+    }
+
+    public function expired()
+    {
+        if((time() - $this->getMTime()) >= $this->expire)
         {
             return true;
         }

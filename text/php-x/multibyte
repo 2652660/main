@@ -42,6 +42,10 @@ class multibyte
             }
             while((empty($_array) || empty($__array)) === false);
         }
+        else
+        {
+            return false;
+        }
         return true;
     }
 }

@@ -1,4 +1,23 @@
 class route
 {
-    
+    public SplFileInfo $file_info;
+    public SplFileInfo $mime_file;
+    public string $mime_type;
+
+    public function __construct(SplFileInfo $file_info)
+    {
+        $this->file_info = $file_info;
+        echo $mime_type = mime_content_type($file_info->getFileName());
+        echo $file = join(INI, [
+            $file_info->getPathInfo(),
+            $mime_type,
+            $file_info->getBasename(ONT.$file_info->getExtension())
+        ]);
+        $this->mime_file = new SplFileInfo($file);
+    }
+
+    public function out(): string
+    {
+        return '';
+    }
 }
